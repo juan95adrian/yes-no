@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>One Question ❤️</title>
+    <title>Adrian Matovu</title>
 
     <style>
         * {
@@ -15,6 +15,7 @@
             overflow: hidden;
             background: linear-gradient(135deg, #ffd6e5, #fff0f5);
             font-family: Arial, sans-serif;
+
             display: flex;
             justify-content: center;
             align-items: center;
@@ -47,7 +48,6 @@
         }
 
         #buttons {
-            position: relative;
             height: 100px;
         }
 
@@ -60,12 +60,11 @@
             cursor: pointer;
         }
 
-        /* YES BUTTON */
+        /* YES */
 
         #yes {
             background: #ff4d79;
             color: white;
-            transition: transform 0.15s ease;
         }
 
         #yes.vibrate {
@@ -98,34 +97,43 @@
             }
         }
 
-        /* NO BUTTON */
+        /* NO */
 
         #no {
             background: #555;
             color: white;
+
             position: fixed;
+
             transition:
                 left 0.18s ease,
-                top 0.18s ease,
-                transform 0.18s ease;
+                top 0.18s ease;
+            
             z-index: 10;
         }
 
+        /* COMMENTARY */
+
         #message {
             margin-top: 25px;
-            min-height: 60px;
+            min-height: 65px;
+
             font-size: 20px;
             font-weight: bold;
+
             color: #ff4d79;
+
             line-height: 1.4;
         }
 
-        /* FLOATING HEARTS */
+        /* HEARTS */
 
         .floating-heart {
             position: fixed;
             bottom: -30px;
+
             pointer-events: none;
+
             animation: floatUp linear forwards;
         }
 
@@ -146,31 +154,46 @@
         .confetti {
             position: fixed;
             top: -20px;
+
             pointer-events: none;
+
             animation: fall linear forwards;
         }
 
         @keyframes fall {
             to {
-                transform: translateY(110vh) rotate(720deg);
+                transform:
+                    translateY(110vh)
+                    rotate(720deg);
+
                 opacity: 0;
             }
         }
     </style>
 </head>
 
+
 <body>
+
 
     <div class="container" id="main">
 
-        <div class="heart">❤️</div>
+        <div class="heart">
+            ❤️
+        </div>
 
-        <h1>Will you say YES? 🥺</h1>
+        <h1>
+            Why are you GAY? 🥺
+        </h1>
 
         <div id="buttons">
 
-            <button id="yes" onclick="yesClicked()">
+            <button
+                id="yes"
+                onclick="yesClicked()">
+
                 YES ❤️
+
             </button>
 
         </div>
@@ -179,22 +202,31 @@
 
     </div>
 
+
     <button id="no">
         NO 😭
     </button>
 
 
+
     <script>
 
-        const noButton = document.getElementById("no");
-        const yesButton = document.getElementById("yes");
-        const message = document.getElementById("message");
+        const noButton =
+            document.getElementById("no");
+
+        const yesButton =
+            document.getElementById("yes");
+
+        const message =
+            document.getElementById("message");
+
 
         let attempts = 0;
 
 
+
         /*
-            EVERYTHING THE NO BUTTON SAYS
+        40 DIFFERENT COMMENTS
         */
 
         const messages = [
@@ -237,36 +269,81 @@
 
             "YOU CANNOT CATCH ME 🏃💨",
 
-            "Just. Say. YES. ❤️"
+            "Just. Say. YES. ❤️",
+
+            "Why are you like this? 😭",
+
+            "I'm starting to think you enjoy chasing me 😂",
+
+            "NO is currently unavailable 💀",
+
+            "The button said NO to you saying NO 😂",
+
+            "Bro I'm RIGHT HERE... SIKE 😭",
+
+            "You almost had me! 😂",
+
+            "That was close 👀",
+
+            "Nahhhh I'm too fast 🏃💨",
+
+            "Give up already 😭",
+
+            "I have places to be 💀",
+
+            "You're really committed to this NO thing huh? 😂",
+
+            "The YES button is looking lonely 🥺",
+
+            "I'm protecting your future 😂❤️",
+
+            "NO has officially entered witness protection 💀",
+
+            "You can't escape the YES 😭",
+
+            "How many times are you going to try? 😂",
+
+            "I'm not even sorry anymore 💀",
+
+            "Okay this is getting personal 😂",
+
+            "PLEASE JUST PRESS YES 😭❤️",
+
+            "Fine. Chase me forever then 😂"
 
         ];
 
 
+
         /*
-            PUT THE NO BUTTON
-            IN A RANDOM POSITION
+        MOVE NO BUTTON
         */
 
         function moveNoButton() {
 
             attempts++;
 
+
             const padding = 15;
+
 
             const maxX =
                 window.innerWidth -
                 noButton.offsetWidth -
                 padding;
 
+
             const maxY =
                 window.innerHeight -
                 noButton.offsetHeight -
                 padding;
 
+
             const x =
                 Math.random() *
                 (maxX - padding)
                 + padding;
+
 
             const y =
                 Math.random() *
@@ -274,48 +351,63 @@
                 + padding;
 
 
-            noButton.style.left = x + "px";
-            noButton.style.top = y + "px";
+            noButton.style.left =
+                x + "px";
+
+
+            noButton.style.top =
+                y + "px";
+
 
 
             /*
-                MAKE YES VIBRATE
+            VIBRATE YES
             */
 
-            yesButton.classList.remove("vibrate");
+            yesButton.classList.remove(
+                "vibrate"
+            );
+
 
             void yesButton.offsetWidth;
 
-            yesButton.classList.add("vibrate");
+
+            yesButton.classList.add(
+                "vibrate"
+            );
+
 
 
             /*
-                CHANGE THE COMMENTARY
+            CHANGE COMMENT
+
+            % makes the comments
+            repeat forever.
             */
 
             message.innerText =
                 messages[
-                    Math.min(
-                        attempts - 1,
-                        messages.length - 1
-                    )
+                    (attempts - 1)
+                    % messages.length
                 ];
+
         }
 
 
+
         /*
-            START THE NO BUTTON
-            IN A RANDOM POSITION
+        START NO BUTTON
         */
 
         moveNoButton();
 
 
-        /*
-            COMPUTER VERSION
 
-            The NO button runs away
-            when the mouse gets close.
+        /*
+        COMPUTER
+
+        Run away when mouse
+        gets close.
         */
 
         document.addEventListener(
@@ -325,27 +417,34 @@
                 const rect =
                     noButton.getBoundingClientRect();
 
+
                 const centerX =
                     rect.left +
                     rect.width / 2;
+
 
                 const centerY =
                     rect.top +
                     rect.height / 2;
 
+
                 const distance =
                     Math.sqrt(
+
                         Math.pow(
                             event.clientX -
                             centerX,
                             2
                         )
+
                         +
+
                         Math.pow(
                             event.clientY -
                             centerY,
                             2
                         )
+
                     );
 
 
@@ -359,11 +458,12 @@
         );
 
 
-        /*
-            PHONE VERSION
 
-            The NO button runs away
-            when the finger gets close.
+        /*
+        PHONE
+
+        Run away when finger
+        gets close.
         */
 
         document.addEventListener(
@@ -373,34 +473,42 @@
                 const touch =
                     event.touches[0];
 
+
                 const rect =
                     noButton.getBoundingClientRect();
+
 
                 const centerX =
                     rect.left +
                     rect.width / 2;
 
+
                 const centerY =
                     rect.top +
                     rect.height / 2;
 
+
                 const distance =
                     Math.sqrt(
+
                         Math.pow(
                             touch.clientX -
                             centerX,
                             2
                         )
+
                         +
+
                         Math.pow(
                             touch.clientY -
                             centerY,
                             2
                         )
+
                     );
 
 
-                if (distance < 120) {
+                if (distance < 140) {
 
                     event.preventDefault();
 
@@ -409,54 +517,64 @@
                 }
 
             },
+
             {
                 passive: false
             }
         );
 
 
+
         /*
-            YES BUTTON
+        YES BUTTON
         */
 
         function yesClicked() {
 
-            document.getElementById("main").innerHTML = `
+            document.getElementById(
+                "main"
+            ).innerHTML = `
 
                 <div class="heart">
                     💖
                 </div>
 
                 <h1>
-                    YAAAAAY!!! 🥰❤️
+                    IT'S OKAY BRO I ALREADY KNEW
                 </h1>
 
-                <p style="font-size:24px;">
-                    I knew you'd say YES! 😭❤️
+                <p style="
+                    font-size:24px;
+                    font-weight:bold;
+                ">
+                    ATLEAST YOU'RE NOT AN ARSENAL FAN THAT'S DOUBLE GAY
                 </p>
 
             `;
 
 
             /*
-                REMOVE NO BUTTON
+            REMOVE NO
             */
 
             noButton.remove();
 
 
+
             /*
-                CELEBRATION
+            CELEBRATION
             */
 
             createHearts();
 
             createConfetti();
+
         }
 
 
+
         /*
-            FLOATING HEARTS
+        FLOATING HEARTS
         */
 
         function createHearts() {
@@ -468,10 +586,14 @@
             ) {
 
                 const heart =
-                    document.createElement("div");
+                    document.createElement(
+                        "div"
+                    );
+
 
                 heart.className =
                     "floating-heart";
+
 
                 heart.innerText =
                     [
@@ -488,21 +610,24 @@
 
 
                 heart.style.left =
-                    Math.random() * 100 + "vw";
+                    Math.random() * 100
+                    + "vw";
 
 
                 heart.style.fontSize =
                     (
                         20 +
                         Math.random() * 30
-                    ) + "px";
+                    )
+                    + "px";
 
 
                 heart.style.animationDuration =
                     (
                         2 +
                         Math.random() * 4
-                    ) + "s";
+                    )
+                    + "s";
 
 
                 document.body.appendChild(
@@ -516,12 +641,15 @@
                     },
                     6000
                 );
+
             }
+
         }
 
 
+
         /*
-            CONFETTI
+        CONFETTI
         */
 
         function createConfetti() {
@@ -533,7 +661,10 @@
             ) {
 
                 const piece =
-                    document.createElement("div");
+                    document.createElement(
+                        "div"
+                    );
+
 
                 piece.className =
                     "confetti";
@@ -553,21 +684,24 @@
 
 
                 piece.style.left =
-                    Math.random() * 100 + "vw";
+                    Math.random() * 100
+                    + "vw";
 
 
                 piece.style.fontSize =
                     (
                         15 +
                         Math.random() * 20
-                    ) + "px";
+                    )
+                    + "px";
 
 
                 piece.style.animationDuration =
                     (
                         2 +
                         Math.random() * 3
-                    ) + "s";
+                    )
+                    + "s";
 
 
                 document.body.appendChild(
@@ -581,7 +715,9 @@
                     },
                     6000
                 );
+
             }
+
         }
 
     </script>
